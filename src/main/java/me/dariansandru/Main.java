@@ -9,7 +9,7 @@ import me.dariansandru.domain.chess.Manual;
 import me.dariansandru.io.exception.InputException;
 import me.dariansandru.io.exception.OutputException;
 import me.dariansandru.ui.consoleUI.ChessConsoleUI;
-import me.dariansandru.ui.gui.GUIController;
+import me.dariansandru.ui.guiController.GUIController;
 
 import java.util.Objects;
 
@@ -42,9 +42,7 @@ public class Main {
             case "gui" -> {
                 ChessController chessController = new ChessController(p1, p2);
                 ChessConsoleUI chessConsoleUI = new ChessConsoleUI(inputDevice, outputDevice, chessController);
-
                 GUIController guiController = new GUIController(chessConsoleUI);
-
                 guiController.run();
             }
             case "play" -> {

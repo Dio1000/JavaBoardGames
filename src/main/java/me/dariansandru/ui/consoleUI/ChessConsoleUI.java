@@ -1,8 +1,6 @@
 package me.dariansandru.ui.consoleUI;
 
 import me.dariansandru.controller.ChessController;
-import me.dariansandru.domain.chess.chessEngine.ChessEngine;
-import me.dariansandru.domain.chess.chessEngine.ChessEngineUtils;
 import me.dariansandru.domain.chess.piece.PieceColour;
 import me.dariansandru.domain.validator.exception.ValidatorException;
 import me.dariansandru.io.InputDevice;

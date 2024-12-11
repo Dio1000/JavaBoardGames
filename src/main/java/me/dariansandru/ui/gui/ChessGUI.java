@@ -8,16 +8,16 @@ import me.dariansandru.utilities.ChessUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Objects;
 
 import static me.dariansandru.utilities.ChessUtils.getColRow;
+import me.dariansandru.utilities.Pair;
 
 /**
  * Using this class allows the user to use a custom-made GUI for a Chess game.
  */
 public class ChessGUI extends JPanel {
+    
     private Piece[][] pieces;
     private final ChessRound chessRound;
     private Point selectedSquare;
@@ -81,14 +81,16 @@ public class ChessGUI extends JPanel {
      *
      * @param move Move that was played.
      * @param colour Colour of the piece that was moved.
+     * @param startLocation The start location of the moved piece.
      */
-    public void updateBoard(String move, PieceColour colour) {
+    public void updateBoard(String move, PieceColour colour, Pair<Integer, Integer> startLocation) {
         try {
+            System.out.println(move);
             int destinationCol = getColRow(move).getValue1();
             int destinationRow = getColRow(move).getValue2();
 
-            int startRow = chessRound.getStartLocation(move, colour).getValue1();
-            int startCol = chessRound.getStartLocation(move, colour).getValue2();
+            int startRow = startLocation.getValue1();
+            int startCol = startLocation.getValue2();
 
             Piece pieceToMove = ChessUtils.getPiece(String.valueOf(move.charAt(0)), colour);
             if (Objects.equals(pieceToMove.getName(), "None"))
@@ -96,6 +98,10 @@ public class ChessGUI extends JPanel {
 
             int startSquareIndex = (7 - startRow) * 8 + startCol;
             int destinationSquareIndex = (7 - destinationRow) * 8 + destinationCol;
+            
+            System.out.println(startRow + " " + startCol);
+            System.out.println(destinationCol + " " + destinationRow);
+            System.out.println(startSquareIndex + " " + destinationSquareIndex);
 
             JLabel startSquare = (JLabel) this.getComponent(startSquareIndex);
             startSquare.setIcon(null);
@@ -108,6 +114,7 @@ public class ChessGUI extends JPanel {
 
             this.revalidate();
             this.repaint();
+            
         } catch (Exception ex) {
             System.err.println("Error updating board: " + ex.getMessage());
         }

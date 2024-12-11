@@ -1,8 +1,8 @@
 package me.dariansandru.domain.validator;
 
 import me.dariansandru.domain.validator.exception.ValidatorException;
-import me.dariansandru.domain.chess.ChessRound;
-import me.dariansandru.domain.chess.Piece;
+import me.dariansandru.round.ChessRound;
+import me.dariansandru.domain.chess.piece.Piece;
 import me.dariansandru.utilities.ChessUtils;
 
 import java.util.Objects;
